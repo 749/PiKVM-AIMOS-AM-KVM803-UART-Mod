@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+import serial
+import sys
+
+def aimos_select(x):
+    if not 1 <= x <= 8:
+        raise ValueError("Input must be between 1 and 8 inclusive")
+    
+    # Define the bytes to send
+    byte1 = 0x56
+    byte2 = 0x30
+    byte3 = 0x30 + x
+    byte4 = 0x53
+    byte5 = 0x0E
+    
+    # Open the serial port
+    with serial.Serial("/dev/ttyAMA0", 19200, timeout=1) as ser:
+        # Send the bytes
+        ser.write(bytearray([byte1, byte2, byte3, byte4, byte5]))
+        print(f"Sent bytes: {[hex(byte) for byte in [byte1, byte2, byte3, byte4, byte5]]}")
+
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: python aimos_select.py <number between 1 and 8>")
+        sys.exit(1)
+    
+    try:
+        input_number = int(sys.argv[1])
+        aimos_select(input_number)
+    except ValueError as e:
+        print(f"Error: {e}")
+        sys.exit(1)
