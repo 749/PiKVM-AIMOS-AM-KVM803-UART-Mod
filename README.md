@@ -2,6 +2,8 @@
 
 This mod will allow you to use mass storage (referred to as MSD in PiKVM docs) as well as mouse and keyboard, while still being able to switch to different inputs remotely.
 
+![A preview of the menu for selecting the AIMOS port in PiKVM](docs/ui-preview.png)
+
 ## Installation
 
 ### Circuit
@@ -179,3 +181,9 @@ In case you are interested why the components are in the circuit and in the arra
 ## Limitations / Known Problems
 
 - This mod bypasses the chip that interprets the infrared remote as well as the buttons. Thus the LEDs on the front of the device do not show the changes done via the remote interface. The buttons and infrared remote do still work though.
+
+## Thanks / References
+
+- [PiKVM](https://github.com/pikvm/pikvm) - the project is simply amazing
+- [Official Multiport Docs](https://docs.pikvm.org/multiport/#list-of-tested-kvms)
+- [4 Port AIMOS mod](https://github.com/pikvm/pikvm/issues/371) - thank you for the inspiration of using an audio cable for the pi - aimos connection and the optocoupler
