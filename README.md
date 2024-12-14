@@ -12,6 +12,10 @@ You will have to build the following circuit:
 
 ![Image of a circuit explaining how to connect a optocoupler between the PiKVM and the AIMOS AM-KVM803](circuit/circuit.png)
 
+You can find the pins to connect to on the underside of the Raspberry PI:
+
+![Image of the TXD and 3.3V Pins connected to the underside of the Raspberry PI](docs/mod3.jpg)
+
 Here are some images of the AIMOS for reference:
 
 ![Image of the installed mod on the lower board of the AIMOS](docs/mod.jpg)
@@ -51,7 +55,7 @@ Here are some images of the AIMOS for reference:
 
 8. Open the sudoers file for editing
    ```bash
-   nano /etc/sudoers.de/custom_commands
+   nano /etc/sudoers.d/custom_commands
    ```
 9. Paste the following
    ```
@@ -70,6 +74,7 @@ Here are some images of the AIMOS for reference:
     nano /etc/kvmd/override.yaml
     ```
 12. Paste the following
+
     ```yaml
     kvmd:
       gpio:
@@ -152,6 +157,14 @@ Here are some images of the AIMOS for reference:
             - ["#Port 7", port7_button]
             - ["#Port 8", port8_button]
     ```
+
+    > **Tip**
+    >
+    > You can change the description for the buttons in the WebUI by modifying the first string
+    > in the `kvmd > gpio > drivers > view > table` section of the yaml (e.g. "#Port 1").
+    >
+    > I added the hostnames to easily identify the ports.
+
 13. Save and close the file
     ```
     CTRL-S
